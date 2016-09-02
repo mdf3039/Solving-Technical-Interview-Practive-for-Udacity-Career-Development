@@ -1,6 +1,9 @@
-This is the README of the Technical Interview Practice for Udacity's Career Development. There are five questions. Each question will be listed along with a text explanation of the efficiency of the code and design choice
-*Python 2.7 is needed to run all code.
+This is the README of the Technical Interview Practice for Udacity's Career Development. There are five questions. Each question will be listed along with a text explanation of the efficiency of the code and design choice.
+*Python 2.7 is needed to run all code. Each function in Python has three test runs.
 
 Question 1: Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 Answer: This was written in one line of code, so the code is really efficient. I used an if else statement.
 No additional libraries were used.
+
+Question 2: Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
+Answer: First, I created an empty list to put the palindrome. Then, I made sure all of the letters in the string were lower cased. Since I am searching for the longest, it makes sense to search the entire string for a palindrome, then decrease the characters by one and search each substring within the string. This needs to continue until palindrome(s) is found. Once found, the loop adds the palindrome to the empty list, but the loop needs to continue to make sure there aren't any other palindromes in substrings of equal length. The loop adds other palindromes of equal length to the list. Then the code can stop running, or break. Then return 'There is no palindrome!' if there aren't any palindromes, else return the list of the largest palindrome(s). 

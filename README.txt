@@ -13,3 +13,16 @@ Question 3: Given an undirected graph G, find the minimum spanning tree within G
 Vertices are represented as unique strings. The function definition should be question3(G).
 Answer: The minimum spanning tree must connect all vertices. Therefore each vertex must connect to another vertex. I create an empty dictionary and a set with 0, the first index, in the set. I get the adjacency matrix from the graph and convert it to a numpy array matrix. I make sure all of my diagonals are zero and then find the vertex with the lowest edge that connects to vertex 0. I created a function that adds the connection to the dictionary. The function also makes the corresponding columns of the vertices equal to 0 and adds the vertices to the set. I then created a loop that runs until all of the vertices are in the dictionary. The loop takes the rows of the matrix that correspond to the vertices in the set. Then the loop finds a the smallest edge that connects a vertex not in the set to the other vertices in the set. It then uses the function addtodict to add the vertex to the dictionary and set. It returns the dictionary when finished.
 *Python libraries numpy and random, also Python file class_graph.py (attachment given) needed and imported to run the code.
+
+Question 4: Find the least common ancestor between two nodes on a binary search tree. The least common ancestor is the farthest node from the root that is an ancestor of both nodes. For example, the root is a common ancestor of all nodes on the tree, but if both nodes are descendents of the root's left child, then that left child might be the lowest common ancestor. You can assume that both nodes are in the tree, and the tree itself adheres to all BST properties. The function definition should look like question4(T, r, n1, n2), where T is the tree represented as a matrix, where the index of the list is equal to the integer stored in that node and a 1 represents a child node, r is a non-negative integer representing the root, and n1 and n2 are non-negative integers representing the two nodes in no particular order. For example, one test case might be
+question4([[0, 1, 0, 0, 0],
+           [0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0],
+           [1, 0, 0, 0, 1],
+           [0, 0, 0, 0, 0]],
+          3,
+          1,
+          4)
+and the answer would be 3.
+Answer: Create two sets, one for each node. Put the node in its set. Create veriables that maintains the lowest level of both sets. Create a loop that does not stop until the intersection of the two sets is not empty. For each set, the loop finds the parent of the lowest level node and puts the parent in the set. Once the loop is finished, return the node that is the intersection of the two sets. This is the least common ancestor.
+*Python library numpy needed and imported to run the code.

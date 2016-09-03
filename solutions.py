@@ -86,3 +86,44 @@ graph.insert_edge(102, 4, 1)
 graph.insert_edge(103, 4, 3)
 print question3(graph)
 
+###Question 4:Find the least common ancestor between two nodes on a binary search tree. The least
+###common ancestor is the farthest node from the root that is an ancestor of both nodes. For example,
+###the root is a common ancestor of all nodes on the tree, but if both nodes are descendents of the
+###root's left child, then that left child might be the lowest common ancestor. You can assume that
+###both nodes are in the tree, and the tree itself adheres to all BST properties. The function
+###definition should look like question4(T, r, n1, n2), where T is the tree represented as a matrix,
+###where the index of the list is equal to the integer stored in that node and a 1 represents a child
+###node, r is a non-negative integer representing the root, and n1 and n2 are non-negative integers
+###representing the two nodes in no particular order. For example, one test case might be
+###question4([[0, 1, 0, 0, 0],
+###           [0, 0, 0, 0, 0],
+###           [0, 0, 0, 0, 0],
+###           [1, 0, 0, 0, 1],
+###           [0, 0, 0, 0, 0]],
+###          3,
+###          1,
+###          4)
+###and the answer would be 3.
+import numpy as np
+def question4(T, r, n1, n2):
+    #Create two sets, one for each node. Put the node in its set.
+    set1 = set([n1])
+    set2 = set([n2])
+    #Create veriables that maintains the lowest level of both sets.
+    level1 = n1
+    level2 = n2
+    #Make T a numpy array matrix
+    T = np.array(T)
+    #Create a loop that does not stop until the intersection of the two sets is not empty. For each
+    #set, the loop finds the parent of the lowest level node and puts the parent in the set.
+    while len(set.intersection(set1,set2)) == 0:
+        level1 = np.where(T[:,level1] == 1)[0].tolist()
+        None if not level1 else set1.add(level1[0])
+        level2 = np.where(T[:,level2] == 1)[0].tolist()
+        None if not level2 else set2.add(level2[0])
+        if not level1+level2:
+            return "Tree is disconnected"
+    #return the least common ancestor
+    return list(set.intersection(set1,set2))[0]
+print question4([[0, 1, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[1, 0, 0, 0, 1],[0, 0, 0, 0, 0]],3,1,4)
+

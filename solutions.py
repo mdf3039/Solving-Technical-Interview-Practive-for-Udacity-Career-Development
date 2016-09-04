@@ -171,16 +171,21 @@ print question4([[0, 1, 0, 0, 1],[0, 0, 1, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]
 ###    self.next = None
 import linked_list as LL
 def question5(ll, m):
+    #make sure the value of m is more than 0
     if m <=0:
         return "m can't be zero or negative"
+    #set a counter at 1 and find the head of the list
     counter = 1
     if ll.head:
         current = ll.head
     else:
         return "There is no head to this linked list"
+    #Create a while loop to scroll through the linked list until it reaches the end. The loop also
+    #adds one to the counter every time it reaches a new node.
     while current.next:
         current = current.next
         counter += 1
+    #make sure m is not larger than the counter, or number of nodes in the linked list
     if m > counter:
         return "There are only {} nodes so you can't find {} from the end.".format(counter,m)
     else:

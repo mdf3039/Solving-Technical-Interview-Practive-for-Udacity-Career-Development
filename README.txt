@@ -26,3 +26,11 @@ question4([[0, 1, 0, 0, 0],
 and the answer would be 3.
 Answer: Create two sets, one for each node. Put the node in its set. Create veriables that maintains the lowest level of both sets. Create a loop that does not stop until the intersection of the two sets is not empty. For each set, the loop finds the parent of the lowest level node and puts the parent in the set. Once the loop is finished, return the node that is the intersection of the two sets. This is the least common ancestor.
 *Python library numpy needed and imported to run the code.
+
+Question 5: Find the element in a singly linked list that's m elements from the end. For example, if a linked list has 5 elements, the 3rd element from the end is the 3rd element. The function definition should look like question5(ll, m), where ll is the first node of a linked list and m is the "mth number from the end". You should copy/paste the Node class below to use as a representation of a node in the linked list. Return the value of the node at that position.
+class Node(object):
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+Answer: The Node class along with the LinkedList class is contained in the file linked_list.py, which is needed and imported to complete question 5. First, I make sure the value of m is more than 0. If not, it returns an error message. Then I set a counter at 1 and find the head of the list. I create a while loop to sroll through the linked list until it reaches the end. The loop also adds one to the counter every time it reaches a new node. I make sure m is not larger than the counter, or number of nodes in the linked list. If it is not, the function returns the data of the mth node from the end.
+*Python file class_graph.py (attachment given) needed and imported to run the code.

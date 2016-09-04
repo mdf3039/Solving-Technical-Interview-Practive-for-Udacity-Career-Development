@@ -3,6 +3,8 @@
 ###Your function definition should look like: question1(s, t) and return a boolean True or False.
 def question1(s,t):
     return False if s.find(t) == -1 and s.find(t[::-1]) == -1 else True
+#Test function
+print "Test Question 1"
 print question1('This be a string','is')
 print question1('This be a string','si')
 print question1('This be a string','isi')
@@ -20,6 +22,8 @@ def question2(a):
         if len(palindrome) != 0:
             break
     return "There is no palindrome!" if not palindrome else palindrome
+#Test function
+print "Test Question 2"
 print question2('AbraCaDaBra Alakazam')
 print question2('qwertyuytrewq')
 print question2('This has no palindromes!')
@@ -73,6 +77,8 @@ def question3(G):
         #uses the function addtodict to add the vertex to the dictionary and set and zero out the vertex's column
         addtodict(list(in_dict)[point[0]],point[1])
     return a_list
+#Test function
+print "Test Question 3"
 graph = cg.Graph()
 graph.insert_edge(100, 0, 4)
 graph.insert_edge(100, 1, 2)
@@ -85,7 +91,30 @@ graph.insert_edge(101, 3, 1)
 graph.insert_edge(102, 4, 1)
 graph.insert_edge(103, 4, 3)
 print question3(graph)
-
+graph2 = cg.Graph()
+graph2.insert_edge(1, 0, 4)
+graph2.insert_edge(8, 1, 2)
+graph2.insert_edge(11, 1, 3)
+graph2.insert_edge(4, 1, 4)
+graph2.insert_edge(3, 3, 4)
+graph2.insert_edge(1, 4, 0)
+graph2.insert_edge(8, 2, 1)
+graph2.insert_edge(11, 3, 1)
+graph2.insert_edge(4, 4, 1)
+graph2.insert_edge(3, 4, 3)
+print question3(graph2)
+graph3 = cg.Graph()
+graph3.insert_edge(15, 0, 4)
+graph3.insert_edge(81, 1, 2)
+graph3.insert_edge(10, 1, 3)
+graph3.insert_edge(14, 1, 4)
+graph3.insert_edge(31, 3, 4)
+graph3.insert_edge(15, 4, 0)
+graph3.insert_edge(81, 2, 1)
+graph3.insert_edge(10, 3, 1)
+graph3.insert_edge(14, 4, 1)
+graph3.insert_edge(31, 4, 3)
+print question3(graph3)
 ###Question 4:Find the least common ancestor between two nodes on a binary search tree. The least
 ###common ancestor is the farthest node from the root that is an ancestor of both nodes. For example,
 ###the root is a common ancestor of all nodes on the tree, but if both nodes are descendents of the
@@ -125,5 +154,49 @@ def question4(T, r, n1, n2):
             return "Tree is disconnected"
     #return the least common ancestor
     return list(set.intersection(set1,set2))[0]
+#Test function
+print "Test Question 4"
 print question4([[0, 1, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[1, 0, 0, 0, 1],[0, 0, 0, 0, 0]],3,1,4)
+print question4([[0, 1, 0, 0, 1],[0, 0, 1, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 1, 0]],0,1,4)
+print question4([[0, 1, 0, 0, 1],[0, 0, 1, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 1, 0]],0,1,2)
 
+###Question 5:Find the element in a singly linked list that's m elements from the end. For example, if
+###a linked list has 5 elements, the 3rd element from the end is the 3rd element. The function
+###definition should look like question5(ll, m), where ll is the first node of a linked list and m is
+###the "mth number from the end". You should copy/paste the Node class below to use as a representation
+###of a node in the linked list. Return the value of the node at that position.
+###class Node(object):
+###  def __init__(self, data):
+###    self.data = data
+###    self.next = None
+import linked_list as LL
+def question5(ll, m):
+    if m <=0:
+        return "m can't be zero or negative"
+    counter = 1
+    if ll.head:
+        current = ll.head
+    else:
+        return "There is no head to this linked list"
+    while current.next:
+        current = current.next
+        counter += 1
+    if m > counter:
+        return "There are only {} nodes so you can't find {} from the end.".format(counter,m)
+    else:
+        return ll.get_position(counter-m+1).data
+#Test function
+print "Test Question 5"
+n1 = LL.Node(1)
+n2 = LL.Node(2)
+n3 = LL.Node(3)
+n4 = LL.Node(4)
+ll = LL.LinkedList(n1)
+ll.append(n2)
+ll.append(n3)
+ll.append(n4)
+print question5(ll,3)
+print question5(ll,1)
+print question5(ll,4)
+print question5(ll,2)
+print question5(ll,0)
